@@ -1,8 +1,7 @@
 version: '3'
 
 volumes:
-  local_postgres_data: {}
-  local_postgres_data_backups: {}
+  local_mongo_data: {}
 
 services:
   django:
@@ -12,27 +11,25 @@ services:
     image: djongo_playground_local_django
     container_name: django
     depends_on:
-      - postgres
+      - mongo
     volumes:
       - .:/app:z
     env_file:
       - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
     ports:
       - "8000:8000"
     command: /start
 
-  postgres:
+  mongo:
     build:
       context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: djongo_playground_production_postgres
-    container_name: postgres
-    volumes:
-      - local_postgres_data:/var/lib/postgresql/data:Z
-      - local_postgres_data_backups:/backups:z
+      dockerfile: ./compose/local/mongo/Dockerfile
+    image: djongo_playground_local_mongo
+    container_name: mongo
     env_file:
-      - ./.envs/.local/.postgres
+      - ./.envs/.local/.mongo
+    volumes:
+      - local_mongo_data:/data/db
 
   docs:
     image: djongo_playground_local_docs

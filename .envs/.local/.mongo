@@ -1,0 +1,4 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+MONGO_INITDB_ROOT_USERNAME=debug
+MONGO_INITDB_ROOT_PASSWORD=debug
