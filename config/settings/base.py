@@ -39,9 +39,31 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 
 # DATABASES
 # ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
+# https://www.djongomapper.com/get-started/
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        'CLIENT': {
+            'host': 'mongo',
+            'port': 27017,
+            'username': 'debug',
+            'password': 'debug',
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1'
+        },
+        'LOGGING': {
+            'version': 1,
+            'loggers': {
+                'djongo': {
+                    'level': 'DEBUG',
+                    'propagate': False,
+                }
+            },
+         },
+    }
+}
 
 # URLS
 # ------------------------------------------------------------------------------

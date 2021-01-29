@@ -30,19 +30,21 @@ services:
       - ./.envs/.local/.mongo
     volumes:
       - local_mongo_data:/data/db
-
-  docs:
-    image: djongo_playground_local_docs
-    container_name: docs
-    build:
-      context: .
-      dockerfile: ./compose/local/docs/Dockerfile
-    env_file:
-      - ./.envs/.local/.django
-    volumes:
-      - ./docs:/docs:z
-      - ./config:/app/config:z
-      - ./djongo_playground:/app/djongo_playground:z
     ports:
-      - "7000:7000"
-    command: /start-docs
+      - "27017:27017"
+
+#  docs:
+#    image: djongo_playground_local_docs
+#    container_name: docs
+#    build:
+#      context: .
+#      dockerfile: ./compose/local/docs/Dockerfile
+#    env_file:
+#      - ./.envs/.local/.django
+#    volumes:
+#      - ./docs:/docs:z
+#      - ./config:/app/config:z
+#      - ./djongo_playground:/app/djongo_playground:z
+#    ports:
+#      - "7000:7000"
+#    command: /start-docs
