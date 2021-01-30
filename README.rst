@@ -1,7 +1,15 @@
 Djongo Playground
 =================
 
-A Djongo/Django playground in docker compose
+A Djongo/Django playground in docker compose.
+It sets up a Mongo database using the latest version and populates it with
+the mongo training database.
+It also sets up a Django application from the cookiecutter template from pydanny.
+
+To start using it::
+
+    $ docker-compose -f local.yml up
+
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -84,6 +92,3 @@ Docker
 See detailed `cookiecutter-django Docker documentation`_.
 
 .. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html
-
-
-
