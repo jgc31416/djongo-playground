@@ -41,27 +41,27 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://www.djongomapper.com/get-started/
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'djongo',
-        'ENFORCE_SCHEMA': True,
-        'CLIENT': {
-            'host': 'mongo',
-            'port': 27017,
-            'username': 'debug',
-            'password': 'debug',
-            'authSource': 'admin',
-            'authMechanism': 'SCRAM-SHA-1'
+    "default": {
+        "ENGINE": "djongo",
+        "NAME": "djongo",
+        "ENFORCE_SCHEMA": False,
+        "CLIENT": {
+            "host": "mongo",
+            "port": 27017,
+            "username": "debug",
+            "password": "debug",
+            "authSource": "admin",
+            "authMechanism": "SCRAM-SHA-1",
         },
-        'LOGGING': {
-            'version': 1,
-            'loggers': {
-                'djongo': {
-                    'level': 'DEBUG',
-                    'propagate': False,
+        "LOGGING": {
+            "version": 1,
+            "loggers": {
+                "djongo": {
+                    "level": "DEBUG",
+                    "propagate": False,
                 }
             },
-         },
+        },
     }
 }
 
